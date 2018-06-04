@@ -42,11 +42,15 @@ class Application(Frame):
     
     def md5_cal(self):
         # md5_file.truncate()
-        list = os.listdir(self.nameInput.get())  # 列出文件夹下所有的目录与文件
-        md5_file = open(os.path.join(self.nameInput.get(), 'md5_file.txt'), 'w')
+        input_location=self.nameInput.get()
+        if input_location=='':
+            messagebox.showinfo('Message', '请输入合法路径')
+            return
+        list = os.listdir(input_location)  # 列出文件夹下所有的目录与文件
+        md5_file = open(os.path.join(input_location, 'md5_file.txt'), 'w')
         for i in range(0, len(list)):
-            path = os.path.join(self.nameInput.get(), list[i])
-            if os.path.isfile(path):
+            path = os.path.join(input_location, list[i])
+            if os.path.isfile(path) and path!=os.path.join(input_location, 'md5_file.txt'):
                 # 你想对文件的操作
                 md5_file.write(os.path.basename(path)+': '+get_md5_01(path)+'\n')
         md5_file.close()
