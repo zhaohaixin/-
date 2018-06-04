@@ -46,7 +46,11 @@ class Application(Frame):
         if input_location=='':
             messagebox.showinfo('Message', '请输入合法路径')
             return
-        list = os.listdir(input_location)  # 列出文件夹下所有的目录与文件
+        try:
+            list = os.listdir(input_location)  # 列出文件夹下所有的目录与文件
+        except FileNotFoundError as e:
+            messagebox.showinfo('Message', '此路径不存在')
+            return
         md5_file = open(os.path.join(input_location, 'md5_file.txt'), 'w')
         for i in range(0, len(list)):
             path = os.path.join(input_location, list[i])
