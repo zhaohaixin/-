@@ -1,4 +1,5 @@
 import os
+from collections import Counter
 
 import xlrd
 
@@ -33,8 +34,5 @@ for x in file_xlsx:
     temp_dict.update({os.path.basename(x): temp_list})
     sum_list += list(set(temp_list))
 
-
-# mylist = [1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4]
-# myset = set(mylist)  # myset是另外一个列表，里面的内容是mylist里面的无重复 项
-# for item in myset:
-#     print("the %d has found %d" % (item, mylist.count(item)))
+count=Counter(sum_list)
+print(count)
