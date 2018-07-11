@@ -10,6 +10,7 @@ import os
 import xlrd
 file_xlsx=[]
 temp_dict={}
+sum_list=[]
 ############----获取指定目录下的xlsx文件数和路径地址----#################
 #当前文件的路径
 root_path = os.getcwd()
@@ -27,7 +28,8 @@ for x in file_xlsx:
     temp_list=temp_list[1:]
     temp_list=list(map(int,temp_list))
     temp_dict.update({os.path.basename(x):temp_list})
-print(temp_dict)
+    sum_list+=list(set(temp_list))
+
 
 
 
