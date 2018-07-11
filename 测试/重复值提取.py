@@ -1,3 +1,8 @@
+import os
+
+import xlrd
+
+
 def open_excel(fileofexcel):
     try:
         data = xlrd.open_workbook(fileofexcel)
@@ -5,10 +10,6 @@ def open_excel(fileofexcel):
     except Exception as e:
         print(str(e))
 
-
-import os
-
-import xlrd
 
 file_xlsx = []
 temp_dict = {}
