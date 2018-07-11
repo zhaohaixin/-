@@ -9,6 +9,7 @@ def open_excel(fileofexcel):
 import os
 import xlrd
 file_xlsx=[]
+temp_dict={}
 ############----获取指定目录下的xlsx文件数和路径地址----#################
 #当前文件的路径
 root_path = os.getcwd()
@@ -20,7 +21,13 @@ for x in file:
     if os.path.splitext(newDir)[1]=='.xlsx':
       file_xlsx.append(newDir)
 number=len(file_xlsx)
-
+###获取每个表格的数据
+for x in file_xlsx:
+    temp_list=open_excel(x).sheet_by_name('Sheet1').col_values(0)
+    temp_list=temp_list[1:]
+    temp_list=list(map(int,temp_list))
+    temp_dict.update({os.path.basename(x):temp_list})
+print(temp_dict)
 
 
 
