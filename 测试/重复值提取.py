@@ -1,4 +1,5 @@
 import os
+import csv
 from collections import Counter
 
 import xlrd
@@ -35,4 +36,9 @@ for x in file_xlsx:
     sum_list += list(set(temp_list))
 
 count=Counter(sum_list)
-print(count)
+#按值排序
+sort_list=sorted(count.items(),key = lambda x:x[1],reverse = True)
+with open('碰撞值.csv', 'w', newline='') as f:
+    writer = csv.writer(f)
+    # 还可以写入多行
+    writer.writerows(sort_list)
