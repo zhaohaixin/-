@@ -38,6 +38,7 @@ for x in file_xlsx:
 count=Counter(sum_list)
 #按值排序
 sort_list=sorted(count.items(),key = lambda x:x[1],reverse = True)
+sort_list.insert(0,('群号','加入人数'))
 with open('碰撞值.csv', 'w', newline='') as f:
     writer = csv.writer(f)
     # 还可以写入多行
